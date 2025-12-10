@@ -236,14 +236,15 @@
           align-items: center;
           gap: 0.8rem;
           padding: 0.8rem 1.2rem;
-          border: none;
+          
           border-radius: 0.4rem;
           background: white;
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
           height: 3.5rem;
 
           &:focus-within {
-            box-shadow: 0 0 0 3px rgba(141, 211, 187, 0.3);
+            border-color: #ff8da1;
+            box-shadow: 0 0 0 6px rgba(255, 192, 203, 0.12);
           }
 
           svg {

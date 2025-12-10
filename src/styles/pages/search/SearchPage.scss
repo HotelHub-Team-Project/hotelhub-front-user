@@ -55,14 +55,14 @@
                     align-items: center;
                     gap: 0.8rem;
                     padding: 1rem;
-                    border: 1px solid #ddd;
+                    border: 2px solid rgba(255, 192, 203, 0.6);
                     border-radius: 0.6rem;
                     background: #fff;
                     transition: all 0.3s ease;
 
                     &:focus-within {
-                        border-color: #8DD3BB;
-                        box-shadow: 0 0 0 3px rgba(141, 211, 187, 0.1);
+                        border-color: #ff8da1;
+                        box-shadow: 0 0 0 6px rgba(255, 192, 203, 0.12);
                     }
 
                     &.pointer {
@@ -104,11 +104,25 @@
                     }
                 }
 
+                /* 첫 번째 항목(목적지)은 민트 색상 고정 */
+                &:first-child {
+                    .input-field {
+                        border-color: rgba(255, 192, 203, 0.6);
+                        
+                    }
+                }
+
+                /* 나머지 항목은 연핑크 외곽선 유지 (이미 기본값) */
+                &:not(:first-child) {
+                    .input-field {
+                        border-color: rgba(255, 192, 203, 0.6);
+                    }
+                }
+
                 /* 인원 선택 팝업 스타일 */
                 .guest-popup {
                     position: absolute;
-                    top: 100%;
-                    left: 0;
+                    
                     width: 100%;
                     min-width: 25rem;
                     background: #fff;

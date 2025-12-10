@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 /* ✅ [추가] 페이지 이동을 위한 useNavigate */
 import { useNavigate } from "react-router-dom"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,11 +8,19 @@ import {
   faHeart,
   faMugHot, 
 } from "@fortawesome/free-solid-svg-icons";
+import { useWishlist } from "../../context/WishlistContext";
 import "../../styles/components/hotel/HotelCard.scss";
 
 const HotelCard = ({ hotel }) => {
+  const navigate = useNavigate();
+  const { isInWishlist, toggleWishlist } = useWishlist();
   const [isFavorite, setIsFavorite] = useState(false);
-  const navigate = useNavigate(); /* ✅ 네비게이트 훅 사용 */
+
+  // Sync local state with context
+  useEffect(() => {
+    const hotelId = hotel._id || hotel.id;
+    setIsFavorite(isInWishlist(hotelId));
+  }, [hotel, isInWishlist]);
 
   /* ✅ 상세 페이지 이동 함수 */
   const goToDetail = () => {
@@ -100,8 +108,8 @@ const HotelCard = ({ hotel }) => {
             <button
               className={`btn-heart ${isFavorite ? "active" : ""}`}
               onClick={(e) => {
-                e.stopPropagation(); // 부모 클릭 방지 (이미지 클릭과 분리)
-                setIsFavorite(!isFavorite);
+                e.stopPropagation();
+                toggleWishlist(hotel);
               }}
             >
               <FontAwesomeIcon icon={faHeart} />
