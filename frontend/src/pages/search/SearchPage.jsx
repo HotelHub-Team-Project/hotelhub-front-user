@@ -66,8 +66,8 @@ const SearchPage = () => {
 
         // 체크인/체크아웃이 있으면 추가
         if (checkInDate && checkOutDate) {
-          params.checkIn = checkInDate.toISOString().split('T')[0];
-          params.checkOut = checkOutDate.toISOString().split('T')[0];
+          params.checkIn = checkInDate.toISOString().split("T")[0];
+          params.checkOut = checkOutDate.toISOString().split("T")[0];
         }
 
         // 인원은 선택했을 때만 추가
@@ -303,7 +303,7 @@ const SearchPage = () => {
             )}
 
             {/* ✅ [추가] Show more results 버튼 */}
-            {hotels.length > 0 && totalCount > hotels.length && (
+            {filteredHotels.length > 0 && totalCount > hotels.length && (
               <button className="btn-show-more" onClick={() => setCurrentPage(prev => prev + 1)}>
                 Show more results
               </button>
