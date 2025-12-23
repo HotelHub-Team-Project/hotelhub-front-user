@@ -12,7 +12,7 @@ services:
     #   - "27017:27017"
 
   backend:
-    image: miso4kij/3-hotel-backend:1.0
+    image: miso4kij/3-hotel-backend:1.1
     container_name: 3hotel-backend
     restart: always
     depends_on:
@@ -35,7 +35,7 @@ services:
       - "3000:3000"
 
   frontend:
-    image: miso4kij/3-hotel-frontend:1.0
+    image: miso4kij/3-hotel-frontend:1.1
     container_name: 3hotel-frontend
     restart: always
     depends_on:
